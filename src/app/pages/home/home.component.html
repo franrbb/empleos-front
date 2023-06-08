@@ -1,0 +1,47 @@
+<main role="main">
+
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class="jumbotron">
+      <div class="container">
+        <h3>Encuentra el trabajo que andas buscando.</h3>
+        Puedes buscar por descripción y categoría.
+        <form class="form-inline">
+          <input type="text" class="form-control mb-3" id="exampleFormControlInput1" placeholder="Escriba una búsqueda">&nbsp;
+          <select class="custom-select custom-select mb-3">
+            <option selected>Seleccione una categoría</option>
+            <option value="1">Ventas</option>
+            <option value="2">Contabilidad</option>
+            <option value="3">Transporte</option>
+            <option value="4">Informática</option>
+            <option value="5">Construcción</option>
+          </select>&nbsp;
+          <button type="submit" class="btn btn-primary mb-3">Buscar</button>
+        </form>
+      </div>
+    </div>
+    <hr>
+
+    <div class="alert alert-info" *ngIf="vacantes?.length == 0">
+      No hay registros en la base de datos
+    </div>
+
+    <div class="container"> 
+      <h2 class="font-weight-bold text-center text-capitalize">DESTACADOS</h2>
+      <hr>
+      <div class="row" *ngFor="let vacante of vacantes">
+        <div class="col-md-3">            
+          <img *ngIf="vacante?.imagen" class="rounded mx-auto d-block" src="http://localhost:8090/img/{{vacante.imagen}}" alt="http://localhost:8090/img/{{vacante.imagen}}" width="220" height="220">
+          <img *ngIf="!vacante?.imagen" class="rounded mx-auto d-block" src="http://localhost:8090/img/no-image.png" alt="http://localhost:8090/img/{{vacante.imagen}}" width="220" height="220">         
+        </div>
+        <div class="col-md-9">
+          <h2>{{vacante.nombre}}</h2>
+          <h6 class="card-title"><strong>Categoría: </strong> <span>Arquitectura</span></h6>
+          <h6 class="card-title"><strong>Publicado: </strong> <span>{{ vacante.fecha | date: 'dd/MM/yyyy'}} </span></h6>                
+          <p>{{ vacante.descripcion }}</p>
+          <p><a class="btn btn-secondary" href="#" role="button">Ver detalles &raquo;</a></p>            
+        </div>
+      </div>          
+        <hr>	
+    </div> <!-- /container -->
+
+  </main>
