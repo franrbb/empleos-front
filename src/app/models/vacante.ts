@@ -1,3 +1,4 @@
+import { Categoria } from './categoria';
 export class Vacante {
     id: number;
     nombre: string;
@@ -8,4 +9,5 @@ export class Vacante {
     imagen: string;
     status: string;
     detalles: string;
+    categoria: Categoria;
 }
