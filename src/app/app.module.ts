@@ -8,6 +8,9 @@ import { NavbarComponent } from './shared/navbar/navbar.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { HomeComponent } from './pages/home/home.component';
 import { AcercaComponent } from './pages/acerca/acerca.component';
+import { VerDetalleComponent } from './pages/home/ver-detalle.component';
+import { ActivatedRoute } from '@angular/router';
+
 
 @NgModule({
   declarations: [
@@ -15,7 +18,8 @@ import { AcercaComponent } from './pages/acerca/acerca.component';
     NavbarComponent,
     FooterComponent,
     HomeComponent,
-    AcercaComponent
+    AcercaComponent,
+    VerDetalleComponent
   ],
   imports: [
     BrowserModule,
