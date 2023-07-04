@@ -4,8 +4,8 @@
 
       <div class="row">
         <div class="col-md-3">            
-          <img *ngIf="vacante?.imagen" class="rounded mx-auto d-block" src="http://localhost:8090/img/{{vacante.imagen}}" alt="http://localhost:8090/img/{{vacante.imagen}}" width="220" height="220">
-          <img *ngIf="!vacante?.imagen" class="rounded mx-auto d-block" src="http://localhost:8090/img/no-image.png" alt="http://localhost:8090/img/{{vacante.imagen}}" width="220" height="220">         
+          <img *ngIf="vacante?.imagen" class="rounded mx-auto d-block" src="http://localhost:8090/api/vacantes/img/{{vacante.imagen}}" alt="http://localhost:8090/apivacantes/img/{{vacante.imagen}}" width="220" height="220">
+          <img *ngIf="!vacante?.imagen" class="rounded mx-auto d-block" src="http://localhost:8090/api/vacantes/img/no-image.png" alt="http://localhost:8090/apivacantes/img/{{vacante.imagen}}" width="220" height="220">         
         </div>
         <div class="col-md-9">
           <div class="card">

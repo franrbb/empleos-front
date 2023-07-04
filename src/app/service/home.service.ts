@@ -10,7 +10,7 @@ import Swal from 'sweetalert2';
 })
 export class HomeService {
 
-  private urlEndPoint: string = 'http://localhost:8090';
+  private urlEndPoint: string = 'http://localhost:8090/api/vacantes';
 
   constructor(private http: HttpClient, private router: Router) { }
 
