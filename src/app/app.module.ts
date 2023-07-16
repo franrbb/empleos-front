@@ -10,6 +10,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { AcercaComponent } from './pages/acerca/acerca.component';
 import { VerDetalleComponent } from './pages/home/ver-detalle.component';
 import { ActivatedRoute } from '@angular/router';
+import { VacanteComponent } from './pages/vacantes/vacante/vacante.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { ActivatedRoute } from '@angular/router';
     FooterComponent,
     HomeComponent,
     AcercaComponent,
-    VerDetalleComponent
+    VerDetalleComponent,
+    VacanteComponent
   ],
   imports: [
     BrowserModule,

@@ -7,7 +7,7 @@ export class Vacante {
     salario: number;
     destacado: number;
     imagen: string;
-    status: string;
+    estatus: string;
     detalles: string;
     categoria: Categoria;
 }
