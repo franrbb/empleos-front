@@ -1,3 +1,9 @@
+<ul class="alert alert-danger" *ngIf="errores?.length > 0">
+  <li *ngFor="let err of errores">
+      {{ err }}
+  </li>
+</ul>
+
 <main role="main">     
     <hr>
     <div class="container"> 
@@ -81,7 +87,7 @@
                 <img class="rounded mx-auto d-block" src="assets/images/construccion-logo.png" alt="Generic placeholder image" width="200" height="200">            
               </div>
             </div> 
-            <button (click)="create()" type="submit" class="btn btn-primary">Guardar</button>
+            <button (click)="create()" type="submit" class="btn btn-primary" *ngIf="!vacante.id else elseBlock">Guardar</button>
             <ng-template #elseBlock>
               <button class="btn btn-primary" role="button" (click)="update()">Editar</button>
             </ng-template> 

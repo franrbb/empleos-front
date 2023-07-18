@@ -14,6 +14,7 @@ export class FormVacanteComponent implements OnInit {
 
   vacante: Vacante = new Vacante();
   categorias: Categoria[];
+  errores: string[];
 
   constructor(private _vacanteService: VacanteService, private _categoriaService: CategoriaService, private router: Router, private activatedRdoute: ActivatedRoute) { }
 
@@ -34,6 +35,10 @@ export class FormVacanteComponent implements OnInit {
         icon: 'success'
       });
       this.router.navigate(['/vacantes'])
+    },err => {
+      this.errores = err.error.errors as string[];
+      console.log("Código de error desde el backend: " + err.status);
+      console.log(this.errores);
     });
   }
 
@@ -59,6 +64,10 @@ export class FormVacanteComponent implements OnInit {
         icon: 'success'
       });
       this.router.navigate(['/vacantes']);
+    },err => {
+      this.errores = err.error.errors as string[];
+      console.log("Código de error desde el backend: " + err.status);
+      console.log(this.errores);
     });
   }
 

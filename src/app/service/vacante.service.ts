@@ -21,23 +21,7 @@ export class VacanteService {
   }
 
   create(vacante: Vacante): Observable<Vacante>{
-    return this.http.post<Vacante>(this.urlEndPoint, vacante, {headers: this.httpHeaders})
-      .pipe((catchError( e => {
-        this.router.navigate(['/vacantes'])
-
-          if(e.status == 500){
-            return throwError(e);
-          }
-
-          Swal.fire({
-            title: e.error.mensaje,
-            text: e.error.error,
-            icon: 'error'
-          });
-          
-        return throwError(e);
-          
-    })));
+    return this.http.post<Vacante>(this.urlEndPoint, vacante, {headers: this.httpHeaders});
   }
 
   getVacante(id: number): Observable<Vacante> {
@@ -61,23 +45,7 @@ export class VacanteService {
   }
 
   update(vacante: Vacante): Observable<Vacante> {
-    return this.http.put<Vacante>(`${this.urlEndPoint}/${vacante.id}`, vacante, { headers: this.httpHeaders })
-      .pipe((catchError( e => {
-        this.router.navigate(['/vacantes'])
-
-          if(e.status == 500){
-            return throwError(e);
-          }
-  
-          Swal.fire({
-            title: e.error.mensaje,
-            text: e.error.error,
-            icon: 'error'
-          });
-        
-        return throwError(e);
-
-    })));
+    return this.http.put<Vacante>(`${this.urlEndPoint}/${vacante.id}`, vacante, { headers: this.httpHeaders });
   }
 
   delete(id: number): Observable<void> {
