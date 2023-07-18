@@ -22,13 +22,19 @@ export class HomeService {
     return this.http.get<Vacante>(`${this.urlEndPoint}/home/verDetalle/${id}`)
     .pipe(catchError(e => {
       this.router.navigate(['/home'])
+
+      if(e.status == 500){
+        return throwError(e);
+      }
+
       Swal.fire({
         title: 'Error al recuperar vacante',
         text: e.error.mensaje,
         icon: 'error'
-      })
-      return throwError (e);
-    }))
-  }
+      });
 
+      return throwError (e);
+
+    }));
+  }
 }

@@ -11,6 +11,8 @@ import { AcercaComponent } from './pages/acerca/acerca.component';
 import { VerDetalleComponent } from './pages/home/ver-detalle.component';
 import { ActivatedRoute } from '@angular/router';
 import { VacanteComponent } from './pages/vacantes/vacante/vacante.component';
+import { FormVacanteComponent } from './pages/vacantes/form-vacante/form-vacante.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -21,12 +23,14 @@ import { VacanteComponent } from './pages/vacantes/vacante/vacante.component';
     HomeComponent,
     AcercaComponent,
     VerDetalleComponent,
-    VacanteComponent
+    VacanteComponent,
+    FormVacanteComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

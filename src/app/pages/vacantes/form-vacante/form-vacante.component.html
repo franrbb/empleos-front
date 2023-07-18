@@ -1,0 +1,93 @@
+<main role="main">     
+    <hr>
+    <div class="container"> 
+
+      <div class="card">
+        <h4 class="card-header"><strong>Datos de la oferta de trabajo</strong></h4>              
+        <div class="card-body">
+          <form>              
+            <div class="row">
+              <div class="col-md-3">
+                <div class="form-group">
+                  <label for="nombre">Nombre</label>
+                  <input type="text" class="form-control" id="nombre" name="nombre" [(ngModel)]="vacante.nombre" placeholder="Titulo de la oferta de trabajo">
+                </div>
+              </div>
+              <div class="col-md-9"> 
+                <div class="form-group">
+                  <label for="descripcion">Descripción</label>
+                  <input type="text" class="form-control" id="descripcion" name="descripcion" [(ngModel)]="vacante.descripcion" placeholder="Breve descripcion de la oferta de trabajo">
+                </div> 
+              </div>    
+            </div>    
+            <div class="row">
+              <div class="col-md-3"> 
+                <div class="form-group">
+                  <label for="categoria">Categoría</label>
+                  <select [compareWith]="compararCategoria" class="form-control" name="categoria" id="categoria" [(ngModel)]="vacante.categoria">
+                    <option [ngValue]="undefined">--- Seleccione una categoría ---</option>
+                    <option *ngFor="let categoria of categorias" [ngValue]="categoria">{{ categoria.nombre }}</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="col-md-3"> 
+                <div class="form-group">
+                  <label for="estatus">Estatus</label>
+                  <select class="form-control" name="estatus" id="estatus" [(ngModel)]="vacante.estatus">
+                    <option [ngValue]="undefined">--- Seleccione una opción ---</option>
+                    <option value="Creada">Creada</option>
+                    <option value="Aprobada">Aprobada</option>
+                    <option value="Eliminada">Eliminada</option>	
+                  </select>
+                </div>
+              </div>
+              <div class="col-md-3"> 
+                <div class="form-check">
+                    <label class="form-check-label" for="destacado0"></label><br>
+                    <input class="form-check-input" type="radio" name="destacado" id="destacado" [(ngModel)]="vacante.destacado" value="1">
+                    <label class="form-check-label" for="destacado1">Destacado</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="destacado" id="destacado" [(ngModel)]="vacante.destacado" value="0">
+                    <label class="form-check-label" for="destacado2">No Destacado</label>
+                </div>
+              </div>
+            </div>    
+            <div class="row">
+              <div class="col-md-3"> 
+                <div class="form-group">
+                  <label for="salario">Salario Ofrecido (Aprox)</label>
+                  <input type="text" class="form-control" name="salario" [(ngModel)]="vacante.salario" id="salario" placeholder="Salario aproximado." required="required">
+                </div>
+              </div>
+              <div class="col-md-3"> 
+                <div class="form-group">
+                  <label for="archivoImagen">Imagen</label>
+                  <input type="file" class="form-control-file" name="archivoImagen" id="archivoImagen">
+                </div>
+              </div>
+            </div> 
+            <hr>
+            <div class="row">
+              <div class="col-md-9"> 
+                <div class="form-group">
+                  <label for="detalles"><strong>Detalles</strong></label>          
+                  <textarea class="form-control" name="detalles" [(ngModel)]="vacante.detalles" id="detalles" rows="7"></textarea>
+                </div> 
+              </div> 
+              <div class="col-md-3">
+                <label for="imagen">Imagen/Logo</label>
+                <img class="rounded mx-auto d-block" src="assets/images/construccion-logo.png" alt="Generic placeholder image" width="200" height="200">            
+              </div>
+            </div> 
+            <button (click)="create()" type="submit" class="btn btn-primary">Guardar</button>
+            <ng-template #elseBlock>
+              <button class="btn btn-primary" role="button" (click)="update()">Editar</button>
+            </ng-template> 
+          </form>
+        </div>
+      </div>
+    </div> <!-- /container -->
+
+  </main>

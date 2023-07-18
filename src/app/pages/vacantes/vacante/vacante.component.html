@@ -1,11 +1,16 @@
-<main role="main">     
+<main role="main">
     <hr>
+
+    <div class="alert alert-info" *ngIf="vacantes?.length == 0">
+      No hay registros en la base de datos
+    </div>
+
     <div class="container"> 
 
       <div class="card">
         <h4 class="card-header"><strong>Listado de Ofertas de Trabajo</strong></h4>              
         <div class="card-body">
-          <a class="btn btn-primary" href="#" title="Crear nueva Oferta de Trabajo" role="button"><i class="fas fa-file" aria-hidden="true"></i> Nueva</a>            
+          <a class="btn btn-primary" routerLink="/vacantes/formVacante" title="Crear nueva Oferta de Trabajo" role="button"><i class="fas fa-file" aria-hidden="true"></i> Nueva</a>            
           <hr>
           <table class="table table-hover">
             <thead class="thead-light">
@@ -27,8 +32,8 @@
                 <td *ngIf="vacante.destacado == 1">SI</td>
                 <td *ngIf="vacante.destacado == 0">NO</td>
                 <td>
-                  <a href="#" class="btn btn-success btn-sm" role="button" title="Editar el registro."><i class="fas fa-pencil-alt" aria-hidden="true"></i></a>
-                  <a href="#" class="btn btn-success btn-sm confirmar" role="button" title="Eliminar el registro."><i class="fas fa-trash" aria-hidden="true"></i></a>
+                  <a [routerLink]="['/vacantes/formVacante/', vacante.id]" class="btn btn-success btn-sm" role="button" title="Editar el registro." style="margin: 15px"><i class="fas fa-pencil-alt" aria-hidden="true"></i></a>
+                  <button (click)="delete(vacante)" class="btn btn-success btn-sm" role="button" title="Eliminar el registro."><i class="fas fa-trash" aria-hidden="true"></i></button>
                 </td>
               </tr>              
             </tbody>
