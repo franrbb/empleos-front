@@ -1,0 +1,41 @@
+<ul class="alert alert-danger" *ngIf="errores?.length > 0">
+    <li *ngFor="let err of errores">
+        {{ err }}
+    </li>
+</ul>
+
+<main role="main">     
+      <hr>
+      <div class="container"> 
+
+        <div class="card">
+          <h4 class="card-header"><strong>Datos de la categoría</strong></h4>              
+          <div class="card-body">
+            <form>              
+              <div class="row">
+                <div class="col-md-6"> 
+                  <div class="form-group">
+                    <label for="nombre">Nombre</label>
+                    <input type="text" class="form-control" id="nombre" name="nombre" [(ngModel)]="categoria.nombre" placeholder="Escriba el nombre de la categoria" required="required">
+                  </div>
+                </div>                
+              </div> 
+              <div class="row">
+                <div class="col-md-6"> 
+                  <div class="form-group">
+                    <label for="descripcion">Descripción</label>
+                    <textarea class="form-control" name="descripcion" id="descripcion" [(ngModel)]="categoria.descripcion" rows="2"></textarea>
+                  </div> 
+                </div>                
+              </div> 
+              <hr>
+              <button (click)="create()" type="submit" title="Guardar el registro." class="btn btn-primary" *ngIf="!categoria.id else elseBlock">Guardar</button>  
+              <ng-template #elseBlock>
+                <button class="btn btn-primary" role="button" (click)="update()">Editar</button>
+              </ng-template> 
+            </form>
+          </div>
+        </div>
+      </div> <!-- /container -->
+
+    </main>

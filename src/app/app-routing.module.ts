@@ -5,6 +5,8 @@ import { AcercaComponent } from './pages/acerca/acerca.component';
 import { VerDetalleComponent } from './pages/home/ver-detalle.component';
 import { VacanteComponent } from './pages/vacantes/vacante/vacante.component';
 import { FormVacanteComponent } from './pages/vacantes/form-vacante/form-vacante.component';
+import { CategoriasComponent } from './pages/categorias/categorias.component';
+import { FormCategoriaComponent } from './pages/categorias/form-categoria.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent},
@@ -14,6 +16,9 @@ const routes: Routes = [
   { path: 'vacantes/formVacante', component: FormVacanteComponent},
   { path: 'vacantes/formVacante/:id', component: FormVacanteComponent},
   { path: 'vacantes/delete/:id', component: VacanteComponent},
+  { path: 'categorias', component: CategoriasComponent},
+  { path: 'categorias/formCategoria', component: FormCategoriaComponent},
+  { path: 'categorias/formCategoria/:id', component: FormCategoriaComponent},
   { path: '**', pathMatch: 'full', redirectTo: 'home'}
 
 ];

@@ -13,6 +13,8 @@ import { ActivatedRoute } from '@angular/router';
 import { VacanteComponent } from './pages/vacantes/vacante/vacante.component';
 import { FormVacanteComponent } from './pages/vacantes/form-vacante/form-vacante.component';
 import { FormsModule } from '@angular/forms';
+import { CategoriasComponent } from './pages/categorias/categorias.component';
+import { FormCategoriaComponent } from './pages/categorias/form-categoria.component';
 
 
 @NgModule({
@@ -24,7 +26,9 @@ import { FormsModule } from '@angular/forms';
     AcercaComponent,
     VerDetalleComponent,
     VacanteComponent,
-    FormVacanteComponent
+    FormVacanteComponent,
+    CategoriasComponent,
+    FormCategoriaComponent
   ],
   imports: [
     BrowserModule,

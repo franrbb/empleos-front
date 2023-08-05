@@ -1,0 +1,36 @@
+<main role="main">     
+    <hr>
+    <div class="container"> 
+
+      <div class="card">
+        <h4 class="card-header"><strong>Listado de Categorías</strong></h4>              
+        <div class="card-body">
+          <a class="btn btn-primary" routerLink="/categorias/formCategoria" role="button"><i class="fas fa-file" aria-hidden="true"></i> Nueva</a>            
+          <hr>
+          <table class="table table-hover">
+            <thead class="thead-light">
+              <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Descripción</th>
+                <th scope="col">Operaciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let categoria of categorias">
+                <th scope="row">{{ categoria.id }}</th>
+                <td>{{ categoria.nombre }}</td>
+                <td>{{ categoria.descripcion }}</td>
+                <td>
+                  <a [routerLink]="['/categorias/formCategoria/', categoria.id]" class="btn btn-success btn-sm" role="button" title="Editar"><i class="fas fa-pencil-alt" aria-hidden="true"></i></a>
+                  <button (click)="delete(categoria)"  class="btn btn-success btn-sm confirmar" role="button" title="Eliminar"><i class="fas fa-trash" aria-hidden="true"></i></button>
+                </td>
+              </tr>               
+            </tbody>
+          </table>
+          
+        </div>
+      </div>
+    </div> <!-- /container -->
+
+  </main>
