@@ -1,0 +1,25 @@
+<main role="main">     
+      <hr>
+      <div class="container"> 
+
+        <div class="card">
+          <h4 class="card-header"><strong>Subir imagen</strong></h4>              
+          <div class="card-body">
+            <form>              
+              <div class="row">
+                <div class="col-md-3"> 
+                    <div class="form-group">
+                      <label for="archivoImagen">Imagen</label>
+                      <input (change)="seleccionarFoto($event)" type="file" class="form-control-file" name="archivoImagen" id="archivoImagen">
+                    </div>
+                </div>               
+              </div> 
+              <hr>
+              <button (click)="subirFoto()" type="submit" title="Guardar el registro." class="btn btn-primary">Guardar</button>  
+            </form>
+          </div>
+        </div>
+      </div> <!-- /container -->
+
+    </main>
+

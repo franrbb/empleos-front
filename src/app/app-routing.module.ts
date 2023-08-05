@@ -7,6 +7,7 @@ import { VacanteComponent } from './pages/vacantes/vacante/vacante.component';
 import { FormVacanteComponent } from './pages/vacantes/form-vacante/form-vacante.component';
 import { CategoriasComponent } from './pages/categorias/categorias.component';
 import { FormCategoriaComponent } from './pages/categorias/form-categoria.component';
+import { SubirFotoComponent } from './pages/vacantes/subir-foto/subir-foto.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent},
@@ -15,6 +16,7 @@ const routes: Routes = [
   { path: 'vacantes', component: VacanteComponent},
   { path: 'vacantes/formVacante', component: FormVacanteComponent},
   { path: 'vacantes/formVacante/:id', component: FormVacanteComponent},
+  { path: 'vacantes/formImagen/:id', component: SubirFotoComponent},
   { path: 'vacantes/delete/:id', component: VacanteComponent},
   { path: 'categorias', component: CategoriasComponent},
   { path: 'categorias/formCategoria', component: FormCategoriaComponent},

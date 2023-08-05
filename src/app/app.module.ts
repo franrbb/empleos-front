@@ -15,6 +15,7 @@ import { FormVacanteComponent } from './pages/vacantes/form-vacante/form-vacante
 import { FormsModule } from '@angular/forms';
 import { CategoriasComponent } from './pages/categorias/categorias.component';
 import { FormCategoriaComponent } from './pages/categorias/form-categoria.component';
+import { SubirFotoComponent } from './pages/vacantes/subir-foto/subir-foto.component';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { FormCategoriaComponent } from './pages/categorias/form-categoria.compon
     VacanteComponent,
     FormVacanteComponent,
     CategoriasComponent,
-    FormCategoriaComponent
+    FormCategoriaComponent,
+    SubirFotoComponent
   ],
   imports: [
     BrowserModule,

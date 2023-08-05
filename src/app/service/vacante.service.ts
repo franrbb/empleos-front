@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpEvent, HttpHeaders, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, catchError, throwError } from 'rxjs';
 import { Vacante } from '../models/vacante';
@@ -66,6 +66,24 @@ export class VacanteService {
         return throwError(e);
          
     })));
+  }
+
+  subirFoto(archivo: File, id): Observable<Vacante>{
+    let formData = new FormData();
+    formData.append("archivo", archivo);
+    formData.append("id", id);
+
+    return this.http.post<Vacante>(`${this.urlEndPoint}/upload`, formData)
+    .pipe(
+      catchError( e => {
+        Swal.fire({
+          title: e.error.mensaje,
+          text: e.error.error,
+          icon: 'error'
+        });
+        return throwError(e);
+      })
+    )
   }
 
 }
