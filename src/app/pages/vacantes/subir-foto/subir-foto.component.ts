@@ -43,14 +43,23 @@ export class SubirFotoComponent implements OnInit {
   }
 
   subirFoto(){
-    this._vacanteService.subirFoto(this.fotoSeleccionada, this.vacante.id).subscribe(vacante => {
-      this.vacante = vacante;
+    if(!this.fotoSeleccionada){
       Swal.fire({
-        title: 'La foto se ha subido correctamente',
-        text: `La foto ${this.vacante.imagen} se ha subido con éxito`,
-        icon: 'success'
+        title: 'Error',
+        text: `Debe seleccionar una foto`,
+        icon: 'error'
       });
-      this.router.navigate(['/vacantes'])
-    })
+    }else{
+      this._vacanteService.subirFoto(this.fotoSeleccionada, this.vacante.id).subscribe(vacante => {
+        this.vacante = vacante;
+        Swal.fire({
+          title: 'La foto se ha subido correctamente',
+          text: `La foto ${this.vacante.imagen} se ha subido con éxito`,
+          icon: 'success'
+        });
+        this.router.navigate(['/vacantes'])
+      })
+    }
+    
   }
 }
