@@ -1,6 +1,6 @@
 import { HttpClient, HttpEvent, HttpHeaders, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, catchError, throwError } from 'rxjs';
+import { Observable, catchError, map, throwError } from 'rxjs';
 import { Vacante } from '../models/vacante';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
@@ -18,6 +18,17 @@ export class VacanteService {
 
   getVacantes(): Observable<Vacante[]>{
     return this.http.get<Vacante[]>(this.urlEndPoint);
+  }
+
+  getVacantesPage(page: number): Observable<any> {
+    return this.http.get(this.urlEndPoint + '/page/' + page)
+    .pipe(
+      map( (resp:any) => {
+        (resp.content as Vacante[]).map(vacante => {
+          return vacante;
+        });
+        return resp;
+      }));
   }
 
   create(vacante: Vacante): Observable<Vacante>{

@@ -14,6 +14,7 @@ const routes: Routes = [
   { path: 'acerca', component: AcercaComponent},
   { path: 'home/verDetalle/:id', component: VerDetalleComponent},
   { path: 'vacantes', component: VacanteComponent},
+  { path: 'vacantes/page/:page', component: VacanteComponent},
   { path: 'vacantes/formVacante', component: FormVacanteComponent},
   { path: 'vacantes/formVacante/:id', component: FormVacanteComponent},
   { path: 'vacantes/formImagen/:id', component: SubirFotoComponent},

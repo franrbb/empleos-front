@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Vacante } from 'src/app/models/vacante';
 import { VacanteService } from 'src/app/service/vacante.service';
 import Swal from 'sweetalert2';
@@ -10,13 +11,27 @@ import Swal from 'sweetalert2';
 export class VacanteComponent implements OnInit {
 
   vacantes: Vacante[];
+  paginador: any;
 
-  constructor(private _vacanteService: VacanteService) { }
+  constructor(private _vacanteService: VacanteService, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
-    this._vacanteService.getVacantes().subscribe(vacantes =>
+    this.activatedRoute.paramMap.subscribe( params => {
+      let page: number = +params.get('page');
+
+      if(!page){
+        page = 0;
+      }
+      
+      this._vacanteService.getVacantesPage(page).subscribe(resp => {
+        this.vacantes = resp.content as Vacante[];
+        this.paginador = resp;
+      });
+    })
+
+    /*this._vacanteService.getVacantes().subscribe(vacantes =>
       this.vacantes = vacantes
-    );
+    );*/
   }
 
   delete(vacante: Vacante){

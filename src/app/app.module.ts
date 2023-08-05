@@ -16,6 +16,7 @@ import { FormsModule } from '@angular/forms';
 import { CategoriasComponent } from './pages/categorias/categorias.component';
 import { FormCategoriaComponent } from './pages/categorias/form-categoria.component';
 import { SubirFotoComponent } from './pages/vacantes/subir-foto/subir-foto.component';
+import { PaginatorComponent } from './paginator/paginator.component';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { SubirFotoComponent } from './pages/vacantes/subir-foto/subir-foto.compo
     FormVacanteComponent,
     CategoriasComponent,
     FormCategoriaComponent,
-    SubirFotoComponent
+    SubirFotoComponent,
+    PaginatorComponent
   ],
   imports: [
     BrowserModule,
