@@ -24,7 +24,7 @@ export class HomeService {
       this.router.navigate(['/home'])
 
       if(e.status == 500){
-        return throwError(e);
+        return throwError(() => e);
       }
 
       Swal.fire({
@@ -33,7 +33,7 @@ export class HomeService {
         icon: 'error'
       });
 
-      return throwError (e);
+      return throwError (() => e);
 
     }));
   }

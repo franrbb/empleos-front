@@ -16,12 +16,30 @@ export class CategoriaService {
 
   constructor(private http: HttpClient, private router: Router) { }
 
+  private isNoAutorizado(error): boolean{
+    if(error.status == 401 || error.status == 403){
+      this.router.navigate(['/login']);
+      return true;
+    }
+    return false;
+  }
+
   getCategorias(): Observable<Categoria[]>{
-    return this.http.get<Categoria[]>(this.urlEndPoint);
+    return this.http.get<Categoria[]>(this.urlEndPoint).pipe(
+      catchError(e => {
+        this.isNoAutorizado(e);
+        return throwError(() => e);
+      })
+    );
   }
 
   create(categoria: Categoria): Observable<Categoria>{
-    return this.http.post<Categoria>(this.urlEndPoint, categoria, {headers: this.httpHeaders});
+    return this.http.post<Categoria>(this.urlEndPoint, categoria, {headers: this.httpHeaders}).pipe(
+      catchError(e => {
+        this.isNoAutorizado(e);
+        return throwError(() => e);
+      })
+    );
   }
 
   getCategoria(id: number): Observable<Categoria> {
@@ -30,7 +48,11 @@ export class CategoriaService {
         this.router.navigate(['/categorias'])
   
           if(e.status == 500){
-            return throwError(e);
+            return throwError(() => e);
+          }
+
+          if(this.isNoAutorizado(e)){
+            return throwError(() => e);
           }
   
           Swal.fire({
@@ -39,13 +61,18 @@ export class CategoriaService {
             icon: 'error'
           });
         
-        return throwError(e);
+        return throwError(() => e);
   
     })));
   }
 
   update(categoria: Categoria): Observable<Categoria> {
-    return this.http.put<Categoria>(`${this.urlEndPoint}/${categoria.id}`, categoria, { headers: this.httpHeaders });
+    return this.http.put<Categoria>(`${this.urlEndPoint}/${categoria.id}`, categoria, { headers: this.httpHeaders }).pipe(
+      catchError(e => {
+        this.isNoAutorizado(e);
+        return throwError(() => e);
+      })
+    );
   }
 
   delete(id: number): Observable<void> {
@@ -54,7 +81,11 @@ export class CategoriaService {
         this.router.navigate(['/categorias'])
   
           if(e.status == 500){
-            return throwError(e);
+            return throwError(() => e);
+          }
+
+          if(this.isNoAutorizado(e)){
+            return throwError(() => e);
           }
   
           Swal.fire({
@@ -63,7 +94,7 @@ export class CategoriaService {
             icon: 'error'
           });
         
-        return throwError(e);
+        return throwError(() => e);
          
     })));
   }

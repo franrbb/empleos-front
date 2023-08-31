@@ -17,6 +17,7 @@ import { CategoriasComponent } from './pages/categorias/categorias.component';
 import { FormCategoriaComponent } from './pages/categorias/form-categoria.component';
 import { SubirFotoComponent } from './pages/vacantes/subir-foto/subir-foto.component';
 import { PaginatorComponent } from './paginator/paginator.component';
+import { LoginComponent } from './pages/usuarios/login.component';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { PaginatorComponent } from './paginator/paginator.component';
     CategoriasComponent,
     FormCategoriaComponent,
     SubirFotoComponent,
-    PaginatorComponent
+    PaginatorComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

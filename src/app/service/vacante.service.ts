@@ -16,8 +16,21 @@ export class VacanteService {
 
   constructor(private http: HttpClient, private router: Router) { }
 
+  private isNoAutorizado(e): boolean{
+    if(e.status == 401 || e.status == 403){
+      this.router.navigate(['/login']);
+      return true;
+    }
+    return false;
+  }
+
   getVacantes(): Observable<Vacante[]>{
-    return this.http.get<Vacante[]>(this.urlEndPoint);
+    return this.http.get<Vacante[]>(this.urlEndPoint).pipe(
+      catchError(e => {
+        this.isNoAutorizado(e);
+        return throwError(() => e);
+      })
+    );
   }
 
   getVacantesPage(page: number): Observable<any> {
@@ -28,11 +41,20 @@ export class VacanteService {
           return vacante;
         });
         return resp;
+      }), 
+      catchError(e => {
+        this.isNoAutorizado(e);
+        return throwError(() => e);
       }));
   }
 
   create(vacante: Vacante): Observable<Vacante>{
-    return this.http.post<Vacante>(this.urlEndPoint, vacante, {headers: this.httpHeaders});
+    return this.http.post<Vacante>(this.urlEndPoint, vacante, {headers: this.httpHeaders}).pipe(
+      catchError(e => {
+        this.isNoAutorizado(e);
+        return throwError(() => e);
+      })
+    );
   }
 
   getVacante(id: number): Observable<Vacante> {
@@ -41,7 +63,11 @@ export class VacanteService {
         this.router.navigate(['/vacantes'])
   
           if(e.status == 500){
-            return throwError(e);
+            return throwError(() => e);
+          }
+
+          if(this.isNoAutorizado(e)){
+            return throwError(() => e);
           }
   
           Swal.fire({
@@ -50,13 +76,18 @@ export class VacanteService {
             icon: 'error'
           });
         
-        return throwError(e);
+        return throwError(() => e);
   
     })));
   }
 
   update(vacante: Vacante): Observable<Vacante> {
-    return this.http.put<Vacante>(`${this.urlEndPoint}/${vacante.id}`, vacante, { headers: this.httpHeaders });
+    return this.http.put<Vacante>(`${this.urlEndPoint}/${vacante.id}`, vacante, { headers: this.httpHeaders }).pipe(
+      catchError(e => {
+        this.isNoAutorizado(e);
+        return throwError(() => e);
+      })
+    );
   }
 
   delete(id: number): Observable<void> {
@@ -66,6 +97,10 @@ export class VacanteService {
   
           if(e.status == 500){
             return throwError(e);
+          }
+
+          if(this.isNoAutorizado(e)){
+            return throwError(() => e);
           }
   
           Swal.fire({
@@ -87,12 +122,17 @@ export class VacanteService {
     return this.http.post<Vacante>(`${this.urlEndPoint}/upload`, formData)
     .pipe(
       catchError( e => {
+
+        if(this.isNoAutorizado(e)){
+          return throwError(() => e);
+        }
+
         Swal.fire({
           title: e.error.mensaje,
           text: e.error.error,
           icon: 'error'
         });
-        return throwError(e);
+        return throwError(() => e);
       })
     )
   }
