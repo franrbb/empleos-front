@@ -27,10 +27,22 @@ export class CategoriaService {
   }
 
   private isNoAutorizado(error): boolean{
-    if(error.status == 401 || error.status == 403){
+    if(error.status == 401){
       this.router.navigate(['/login']);
       return true;
     }
+
+    if(error.status == 403){
+      this.router.navigate(['/home']);
+      Swal.fire(
+        'Acceso denegado',
+        `Hola ${this._authService.usuario.username}, no tienes acceso a este recurso`,
+        'warning'
+      );
+      
+      return true;
+    }
+
     return false;
   }
 

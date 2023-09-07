@@ -27,10 +27,22 @@ export class VacanteService {
   }
 
   private isNoAutorizado(e): boolean{
-    if(e.status == 401 || e.status == 403){
+    if(e.status == 401){
       this.router.navigate(['/login']);
       return true;
     }
+
+    if(e.status == 403){
+      this.router.navigate(['/home']);
+      Swal.fire(
+        'Acceso denegado',
+        `Hola ${this._authService.usuario.username}, no tienes acceso a este recurso`,
+        'warning'
+      );
+      
+      return true;
+    }
+
     return false;
   }
 
@@ -46,12 +58,12 @@ export class VacanteService {
   getVacantesPage(page: number): Observable<any> {
     return this.http.get(this.urlEndPoint + '/page/' + page, {headers: this.agregarAuthorizationHeader()})
     .pipe(
-      map( (resp:any) => {
+      /*map( (resp:any) => {
         (resp.content as Vacante[]).map(vacante => {
           return vacante;
         });
         return resp;
-      }), 
+      }),*/
       catchError(e => {
         this.isNoAutorizado(e);
         return throwError(() => e);
