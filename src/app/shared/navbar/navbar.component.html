@@ -17,7 +17,19 @@
             <a class="nav-link" routerLink="/categorias">Categorías</a>
           </li>        
         </ul>  
-        <a class="btn btn-primary" routerLink="/login">Ingresar</a>&nbsp;
+        <a *ngIf="!_authService.isAuthenticated()" class="btn btn-primary" routerLink="/login">Ingresar</a>&nbsp;
+        <!--<a *ngIf="_authService.isAuthenticated()" class="btn btn-primary" routerLink="/login">{{ _authService.usuario.username }}</a>&nbsp;-->
+
+        <div *ngIf="_authService.isAuthenticated()" class="dropdown">
+          <a class="btn btn-primary dropdown-toggle text-white" data-toggle="dropdown" aria-expanded="false">&nbsp;
+            {{ _authService.usuario.username }}
+          </a>
+        
+          <div class="dropdown-menu">
+            <button (click)="logout()" class="btn btn-primary dropdown-item" type="submit">Salir</button>
+          </div>
+        </div>
+
         <a class="btn btn-primary" href="#">Registrarse</a>
       </div>
     </nav>

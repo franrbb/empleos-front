@@ -4,6 +4,7 @@ import { Categoria } from '../models/categoria';
 import { Observable, catchError, throwError } from 'rxjs';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
+import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,16 @@ export class CategoriaService {
 
   private httpHeaders = new HttpHeaders({'Content-Type' : 'application/json'});
 
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private http: HttpClient, private router: Router, private _authService: AuthService) { }
+
+  private agregarAuthorizationHeader(){
+    let token = this._authService.token;
+
+    if(token != null){
+      return this.httpHeaders.append('Authorization', 'Bearer ' + token);
+    }
+    return this.httpHeaders;
+  }
 
   private isNoAutorizado(error): boolean{
     if(error.status == 401 || error.status == 403){
@@ -25,7 +35,7 @@ export class CategoriaService {
   }
 
   getCategorias(): Observable<Categoria[]>{
-    return this.http.get<Categoria[]>(this.urlEndPoint).pipe(
+    return this.http.get<Categoria[]>(this.urlEndPoint, {headers: this.agregarAuthorizationHeader()}).pipe(
       catchError(e => {
         this.isNoAutorizado(e);
         return throwError(() => e);
@@ -34,7 +44,7 @@ export class CategoriaService {
   }
 
   create(categoria: Categoria): Observable<Categoria>{
-    return this.http.post<Categoria>(this.urlEndPoint, categoria, {headers: this.httpHeaders}).pipe(
+    return this.http.post<Categoria>(this.urlEndPoint, categoria, {headers: this.agregarAuthorizationHeader()}).pipe(
       catchError(e => {
         this.isNoAutorizado(e);
         return throwError(() => e);
@@ -43,7 +53,7 @@ export class CategoriaService {
   }
 
   getCategoria(id: number): Observable<Categoria> {
-    return this.http.get<Categoria>(`${this.urlEndPoint}/${id}`)
+    return this.http.get<Categoria>(`${this.urlEndPoint}/${id}`, {headers: this.agregarAuthorizationHeader()})
       .pipe((catchError( e => {
         this.router.navigate(['/categorias'])
   
@@ -67,7 +77,7 @@ export class CategoriaService {
   }
 
   update(categoria: Categoria): Observable<Categoria> {
-    return this.http.put<Categoria>(`${this.urlEndPoint}/${categoria.id}`, categoria, { headers: this.httpHeaders }).pipe(
+    return this.http.put<Categoria>(`${this.urlEndPoint}/${categoria.id}`, categoria, {headers: this.agregarAuthorizationHeader()}).pipe(
       catchError(e => {
         this.isNoAutorizado(e);
         return throwError(() => e);
@@ -76,7 +86,7 @@ export class CategoriaService {
   }
 
   delete(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.urlEndPoint}/${id}`)
+    return this.http.delete<void>(`${this.urlEndPoint}/${id}`, {headers: this.agregarAuthorizationHeader()})
       .pipe((catchError( e => {
         this.router.navigate(['/categorias'])
   
