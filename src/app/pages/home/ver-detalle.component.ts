@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Vacante } from 'src/app/models/vacante';
+import { AuthService } from 'src/app/service/auth.service';
 import { HomeService } from 'src/app/service/home.service';
 
 @Component({
@@ -12,7 +13,7 @@ export class VerDetalleComponent implements OnInit {
 
   vacante: Vacante;
 
-  constructor(private _homeService: HomeService, private activatedRoute: ActivatedRoute) { }
+  constructor(private _homeService: HomeService, private activatedRoute: ActivatedRoute, public _authService: AuthService) { }
 
   ngOnInit(): void {
     this.activatedRoute.paramMap.subscribe( params => {

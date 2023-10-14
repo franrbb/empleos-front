@@ -28,6 +28,11 @@ export class VacanteService {
 
   private isNoAutorizado(e): boolean{
     if(e.status == 401){
+
+      if(this._authService.isAuthenticated){
+        this._authService.logout();
+      }
+
       this.router.navigate(['/login']);
       return true;
     }

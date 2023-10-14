@@ -28,6 +28,11 @@ export class CategoriaService {
 
   private isNoAutorizado(error): boolean{
     if(error.status == 401){
+
+      if(this._authService.isAuthenticated){
+        this._authService.logout();
+      }
+
       this.router.navigate(['/login']);
       return true;
     }
