@@ -5,5 +5,6 @@ export class Usuario {
     email: string;
     password: string;
     fechaRegistro: Date;
+    enabled: boolean;
     roles: string[] = [];
 } 

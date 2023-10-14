@@ -1,0 +1,39 @@
+<main role="main">     
+    <hr>
+    <div class="container"> 
+
+      <div class="card">
+        <h4 class="card-header"><strong>Listado de Usuarios</strong></h4>              
+        <div class="card-body">            
+          <hr>
+          <table class="table table-hover">
+            <thead class="thead-light">
+              <tr>
+                <th scope="col">Nombre</th>
+                <th scope="col">Username</th>                  
+                <th scope="col">Email</th>
+                <th scope="col">Estatus</th>
+                <th scope="col">Operaciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let usuario of usuarios">
+                <td>{{ usuario.nombre }}</td>
+                <td>{{ usuario.username }}</td>                  
+                <td>{{ usuario.email }}</td>
+                <td *ngIf="usuario.enabled">Activo</td>
+                <td *ngIf="!usuario.enabled">Bloqueado</td>
+                <td>
+                  <button (click)="delete(usuario)" class="btn btn-success btn-sm confirmar" role="button" title="Eliminar el registro." style="margin: 15px"><i class="fas fa-trash" aria-hidden="true"></i></button>
+                  <button *ngIf="usuario.enabled" (click)="bloquearUsuario(usuario)"  class="btn btn-success btn-sm" role="button" title="Bloquear el acceso al sistema para este usuario."><i class="fas fa-lock" aria-hidden="true"></i></button>	
+                  <button *ngIf="!usuario.enabled" (click)="desbloquearUsuario(usuario)" class="btn btn-success btn-sm" role="button" title="Permitir el acceso al sistema a este usuario."><i class="fas fa-unlock" aria-hidden="true"></i></button>
+                </td>
+              </tr>                          
+            </tbody>
+          </table>
+          
+        </div>
+      </div>
+    </div> <!-- /container -->
+
+</main>

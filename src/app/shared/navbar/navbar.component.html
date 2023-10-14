@@ -15,7 +15,10 @@
           </li>
           <li *ngIf="_authService.hasRole('ROLE_ADMIN')" class="nav-item" routerLinkActive="active">
             <a class="nav-link" routerLink="/categorias">Categorías</a>
-          </li>        
+          </li>
+          <li *ngIf="_authService.hasRole('ROLE_ADMIN')" class="nav-item" routerLinkActive="active">
+            <a class="nav-link" routerLink="/usuarios">Usuarios</a>
+          </li>         
         </ul>  
         <a *ngIf="!_authService.isAuthenticated()" class="btn btn-primary" routerLink="/login">Ingresar</a>&nbsp;
         <!--<a *ngIf="_authService.isAuthenticated()" class="btn btn-primary" routerLink="/login">{{ _authService.usuario.username }}</a>&nbsp;-->

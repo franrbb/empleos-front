@@ -18,6 +18,8 @@ import { FormCategoriaComponent } from './pages/categorias/form-categoria.compon
 import { SubirFotoComponent } from './pages/vacantes/subir-foto/subir-foto.component';
 import { PaginatorComponent } from './paginator/paginator.component';
 import { LoginComponent } from './pages/usuarios/login.component';
+import { UsuariosComponent } from './pages/usuarios/usuarios.component';
+
 
 
 @NgModule({
@@ -34,7 +36,8 @@ import { LoginComponent } from './pages/usuarios/login.component';
     FormCategoriaComponent,
     SubirFotoComponent,
     PaginatorComponent,
-    LoginComponent
+    LoginComponent,
+    UsuariosComponent
   ],
   imports: [
     BrowserModule,
