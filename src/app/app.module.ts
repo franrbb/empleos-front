@@ -19,6 +19,7 @@ import { SubirFotoComponent } from './pages/vacantes/subir-foto/subir-foto.compo
 import { PaginatorComponent } from './paginator/paginator.component';
 import { LoginComponent } from './pages/usuarios/login.component';
 import { UsuariosComponent } from './pages/usuarios/usuarios.component';
+import { FormUsuarioComponent } from './pages/usuarios/form-usuario.component';
 
 
 
@@ -37,7 +38,8 @@ import { UsuariosComponent } from './pages/usuarios/usuarios.component';
     SubirFotoComponent,
     PaginatorComponent,
     LoginComponent,
-    UsuariosComponent
+    UsuariosComponent,
+    FormUsuarioComponent
   ],
   imports: [
     BrowserModule,

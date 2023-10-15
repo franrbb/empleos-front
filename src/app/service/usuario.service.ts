@@ -60,6 +60,15 @@ export class UsuarioService {
     );
   }
 
+  create(usuario: Usuario): Observable<Usuario>{
+    return this.http.post<Usuario>(this.urlEndPoint, usuario, {headers: this.agregarAuthorizationHeader()}).pipe(
+      catchError(e => {
+        this.isNoAutorizado(e);
+        return throwError(() => e);
+      })
+    );
+  }
+
   delete(id: number): Observable<void> {
     return this.http.delete<void>(`${this.urlEndPoint}/${id}`, {headers: this.agregarAuthorizationHeader()})
       .pipe((catchError( e => {

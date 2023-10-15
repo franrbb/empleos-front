@@ -1,0 +1,43 @@
+<main role="main">     
+    <hr>
+    <div class="container"> 
+
+      <div class="card">
+        <h4 class="card-header"><strong>Formulario de registro</strong></h4>              
+        <div class="card-body">
+          <form>              
+            <div class="row">
+              <div class="col-md-3"> 
+                <div class="form-group">
+                  <label for="nombre">Nombre</label>
+                  <input type="text" class="form-control" id="nombre" name="nombre" [(ngModel)]="usuario.nombre" placeholder="Escriba su nombre">
+                </div>
+              </div>
+              <div class="col-md-3"> 
+                <div class="form-group">
+                  <label for="email">Correo electrónico</label>
+                  <input type="email" class="form-control" id="email" name="email" [(ngModel)]="usuario.email" placeholder="Escriba su correo electrónico">
+                </div>
+              </div>    
+              <div class="col-md-3"> 
+                <div class="form-group">
+                  <label for="username">Username</label>
+                  <input type="text" class="form-control" id="username" name="username" [(ngModel)]="usuario.username" placeholder="Escriba su nombre de usuario">
+                </div>
+              </div>
+              <div class="col-md-3"> 
+                <div class="form-group">
+                  <label for="password">Password</label>
+                  <input type="password" class="form-control" id="password" name="password" [(ngModel)]="usuario.password" placeholder="Escriba su clave de acceso">
+                </div>
+              </div>
+            </div>                  
+            <hr>
+            <button (click)="create()" type="submit" title="Quiero registrarme." class="btn btn-primary">Registrarse</button>  
+          </form>
+        </div>
+      </div>
+    </div> <!-- /container -->
+
+</main>
+

@@ -10,6 +10,7 @@ import { FormCategoriaComponent } from './pages/categorias/form-categoria.compon
 import { SubirFotoComponent } from './pages/vacantes/subir-foto/subir-foto.component';
 import { LoginComponent } from './pages/usuarios/login.component';
 import { UsuariosComponent } from './pages/usuarios/usuarios.component';
+import { FormUsuarioComponent } from './pages/usuarios/form-usuario.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent},
@@ -25,6 +26,7 @@ const routes: Routes = [
   { path: 'categorias/formCategoria', component: FormCategoriaComponent},
   { path: 'categorias/formCategoria/:id', component: FormCategoriaComponent},
   { path: 'usuarios', component: UsuariosComponent},
+  { path: 'usuarios/formUsuario', component: FormUsuarioComponent},
   { path: 'login', component: LoginComponent},
   { path: '**', pathMatch: 'full', redirectTo: 'home'}
 
