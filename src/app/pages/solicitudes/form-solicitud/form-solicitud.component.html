@@ -1,0 +1,43 @@
+<main role="main" *ngIf="vacante.categoria">     
+    <hr>
+    <div class="container"> 
+      <div class="row">
+        <div class="col-md-3">            
+            <img *ngIf="vacante?.imagen" class="rounded mx-auto d-block" src="http://localhost:8090/api/vacantes/img/{{vacante.imagen}}" alt="http://localhost:8090/apivacantes/img/{{vacante.imagen}}" width="220" height="220">
+            <img *ngIf="!vacante?.imagen" class="rounded mx-auto d-block" src="http://localhost:8090/api/vacantes/img/no-image.png" alt="http://localhost:8090/apivacantes/img/{{vacante.imagen}}" width="220" height="220">                     
+        </div>
+        <div class="col-md-9">
+          <div class="card">
+            <h4 class="card-header"><strong>Aplicar para la vacante Ingeniero Civil</strong></h4>              
+            <div class="card-body">
+              <h5 class="card-title"><strong>Categoría: </strong><span>{{ vacante.categoria.nombre }}</span></h5>
+              <h6 class="card-title"><strong>Publicado: </strong><span>{{ vacante.fecha | date: 'dd/MM/yyyy' }}</span></h6>
+              <h6 class="card-title"><strong>Salario Ofrecido: </strong><span>{{ vacante.salario }}€</span></h6>
+              <p class="card-text">{{ vacante.descripcion }}</p>
+              <hr>
+              <form>                                                 
+                <div class="row">
+                  <div class="col-md-6"> 
+                    <div class="form-group">
+                      <label for="comentarios">Comentarios</label>
+                      <textarea class="form-control" name="comentarios" id="comentarios" rows="2"></textarea>
+                    </div> 
+                  </div> 
+                  <div class="col-md-6"> 
+                    <div class="form-group">
+                      <label for="archivoCV">Curriculm Vitae</label>
+                      <input type="file" class="form-control-file" name="archivoCV" id="archivoCV">
+                      <p class="help-block">Archivos [ pdf,doc,docx ]</p>
+                    </div>
+                  </div>
+                </div> 
+                <hr>
+                <button type="submit" title="Enviar mi Solicitud." class="btn btn-primary">Enviar</button>  
+              </form>
+            </div>
+          </div> 
+        </div>
+      </div>
+    </div> <!-- /container -->
+
+</main>

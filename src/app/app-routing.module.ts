@@ -11,6 +11,7 @@ import { SubirFotoComponent } from './pages/vacantes/subir-foto/subir-foto.compo
 import { LoginComponent } from './pages/usuarios/login.component';
 import { UsuariosComponent } from './pages/usuarios/usuarios.component';
 import { FormUsuarioComponent } from './pages/usuarios/form-usuario.component';
+import { FormSolicitudComponent } from './pages/solicitudes/form-solicitud/form-solicitud.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent},
@@ -27,6 +28,7 @@ const routes: Routes = [
   { path: 'categorias/formCategoria/:id', component: FormCategoriaComponent},
   { path: 'usuarios', component: UsuariosComponent},
   { path: 'usuarios/formUsuario', component: FormUsuarioComponent},
+  { path: 'solicitudes/formSolicitud/:id', component: FormSolicitudComponent},
   { path: 'login', component: LoginComponent},
   { path: '**', pathMatch: 'full', redirectTo: 'home'}
 

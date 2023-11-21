@@ -20,6 +20,7 @@ import { PaginatorComponent } from './paginator/paginator.component';
 import { LoginComponent } from './pages/usuarios/login.component';
 import { UsuariosComponent } from './pages/usuarios/usuarios.component';
 import { FormUsuarioComponent } from './pages/usuarios/form-usuario.component';
+import { FormSolicitudComponent } from './pages/solicitudes/form-solicitud/form-solicitud.component';
 
 
 
@@ -39,7 +40,8 @@ import { FormUsuarioComponent } from './pages/usuarios/form-usuario.component';
     PaginatorComponent,
     LoginComponent,
     UsuariosComponent,
-    FormUsuarioComponent
+    FormUsuarioComponent,
+    FormSolicitudComponent
   ],
   imports: [
     BrowserModule,

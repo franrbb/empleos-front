@@ -33,7 +33,7 @@
           </div>
         </div>
 
-        <a class="btn btn-primary" routerLink="/usuarios/formUsuario">Registrarse</a>
+        <a *ngIf="!_authService.isAuthenticated()" class="btn btn-primary" routerLink="/usuarios/formUsuario">Registrarse</a>
       </div>
     </nav>
   </header>
