@@ -27,7 +27,7 @@
                   <p class="card-text" [innerHTML]="vacante.detalles"></p>
                 </div>
               </div>   
-              <a *ngIf="_authService.hasRole('ROLE_USER')" class="btn btn-primary" role="button" title="Quiero aplicar para esta oferta de trabajo."><i class="fas fa-file" aria-hidden="true"></i> Aplicar</a>                            
+              <a *ngIf="_authService.hasRole('ROLE_USER')" [routerLink]="[ '/solicitudes/formSolicitud', vacante.id ]" class="btn btn-primary" role="button" title="Quiero aplicar para esta oferta de trabajo."><i class="fas fa-file" aria-hidden="true"></i> Aplicar</a>                            
             </div>
           </div>  
         </div>

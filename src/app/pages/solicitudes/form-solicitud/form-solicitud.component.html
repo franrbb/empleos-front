@@ -20,19 +20,19 @@
                   <div class="col-md-6"> 
                     <div class="form-group">
                       <label for="comentarios">Comentarios</label>
-                      <textarea class="form-control" name="comentarios" id="comentarios" rows="2"></textarea>
+                      <textarea class="form-control" name="comentarios" id="comentarios" [(ngModel)]="solicitud.comentarios" rows="2"></textarea>
                     </div> 
                   </div> 
                   <div class="col-md-6"> 
                     <div class="form-group">
                       <label for="archivoCV">Curriculm Vitae</label>
-                      <input type="file" class="form-control-file" name="archivoCV" id="archivoCV">
+                      <input (change)="seleccionarFoto($event)" type="file" class="form-control-file" name="archivoCV" id="archivoCV">
                       <p class="help-block">Archivos [ pdf,doc,docx ]</p>
                     </div>
                   </div>
                 </div> 
                 <hr>
-                <button type="submit" title="Enviar mi Solicitud." class="btn btn-primary">Enviar</button>  
+                <button (click)="createArchivo()" type="submit" title="Enviar mi Solicitud." class="btn btn-primary">Enviar</button>  
               </form>
             </div>
           </div> 

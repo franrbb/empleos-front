@@ -75,4 +75,46 @@ export class SolicitudService {
   
     })));
   }
+
+  create(solicitud: Solicitud, idVacante: number): Observable<Solicitud>{
+    return this.http.post<Solicitud>(`${this.urlEndPoint}/${idVacante}`, solicitud, {headers: this.agregarAuthorizationHeader()}).pipe(
+      catchError(e => {
+        this.isNoAutorizado(e);
+        return throwError(() => e);
+      })
+    );
+  }
+
+  createArchivo(solicitud: Solicitud, archivo: File, idVacante: number){
+    let formData = new FormData();
+    formData.append("archivo", archivo);
+    formData.append("comentarios", solicitud.comentarios);
+
+    let httpHeaders = new HttpHeaders();
+    let token = this._authService.token;
+
+    if(token != null){
+      httpHeaders =  httpHeaders.append('Authorization', 'Bearer ' + token);
+    }
+
+    return this.http.post<Solicitud>(`${this.urlEndPoint}/archivo/${idVacante}`, formData, {
+      reportProgress: true,
+      headers: httpHeaders
+    })
+    .pipe(
+      catchError( e => {
+
+        if(this.isNoAutorizado(e)){
+          return throwError(() => e);
+        }
+
+        Swal.fire({
+          title: e.error.mensaje,
+          text: e.error.error,
+          icon: 'error'
+        });
+        return throwError(() => e);
+      })
+    )
+  }
 }
