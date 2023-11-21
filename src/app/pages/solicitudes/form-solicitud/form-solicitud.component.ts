@@ -17,6 +17,8 @@ export class FormSolicitudComponent implements OnInit {
 
   fotoSeleccionada: File;
 
+  errores: string[];
+
   constructor(private _solicitudService: SolicitudService, private router: Router, private activatedRdoute: ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -57,8 +59,8 @@ export class FormSolicitudComponent implements OnInit {
     
     if(this.fotoSeleccionada.type.indexOf('pdf') < 0){
       Swal.fire({
-        title: 'Error al seleccionar la imagen',
-        text: 'El archivo de ser de tipo imagen',
+        title: 'Error al seleccionar el documento',
+        text: 'El archivo de ser de tipo PDF',
         icon: 'error'
       });
       this.fotoSeleccionada = null;
@@ -66,19 +68,23 @@ export class FormSolicitudComponent implements OnInit {
   }
 
   createArchivo() {
-    this._solicitudService.createArchivo(this.solicitud, this.fotoSeleccionada, this.vacante.id).subscribe( solicitud => {
-      console.log(solicitud);
-      /*Swal.fire({
-        title: 'Nueva categoría',
-        text: `La categoría ${categoria.nombre} ha sido creada con éxito`,
-        icon: 'success'
+    if(!this.fotoSeleccionada){
+      Swal.fire({
+        title: 'Error',
+        text: `Debe seleccionar un archivo`,
+        icon: 'error'
       });
-      this.router.navigate(['/categorias'])
-    },err => {
-      this.errores = err.error.errors as string[];
-      console.log("Código de error desde el backend: " + err.status);
-      console.log(this.errores);*/
-    });
+    }else{
+      this._solicitudService.createArchivo(this.solicitud, this.fotoSeleccionada, this.vacante.id).subscribe( solicitud => {
+        console.log(solicitud);
+        Swal.fire({
+          title: 'solicitud enviada',
+          text: `su CV ${solicitud.archivo} ha sido enviado con éxito`,
+          icon: 'success'
+        });
+        this.router.navigate(['/home'])
+      })
+    }
   }
 
 }
