@@ -12,6 +12,7 @@ import { LoginComponent } from './pages/usuarios/login.component';
 import { UsuariosComponent } from './pages/usuarios/usuarios.component';
 import { FormUsuarioComponent } from './pages/usuarios/form-usuario.component';
 import { FormSolicitudComponent } from './pages/solicitudes/form-solicitud/form-solicitud.component';
+import { SolicitudesComponent } from './pages/solicitudes/solicitudes/solicitudes.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent},
@@ -28,7 +29,9 @@ const routes: Routes = [
   { path: 'categorias/formCategoria/:id', component: FormCategoriaComponent},
   { path: 'usuarios', component: UsuariosComponent},
   { path: 'usuarios/formUsuario', component: FormUsuarioComponent},
+  { path: 'solicitudes', component: SolicitudesComponent},
   { path: 'solicitudes/formSolicitud/:id', component: FormSolicitudComponent},
+  { path: 'solicitudes/delete/:id', component: SolicitudesComponent},
   { path: 'login', component: LoginComponent},
   { path: '**', pathMatch: 'full', redirectTo: 'home'}
 

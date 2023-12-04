@@ -17,6 +17,9 @@
             <a class="nav-link" routerLink="/categorias">Categorías</a>
           </li>
           <li *ngIf="_authService.hasRole('ROLE_ADMIN')" class="nav-item" routerLinkActive="active">
+            <a class="nav-link" routerLink="/solicitudes">Solicitudes</a>
+          </li> 
+          <li *ngIf="_authService.hasRole('ROLE_ADMIN')" class="nav-item" routerLinkActive="active">
             <a class="nav-link" routerLink="/usuarios">Usuarios</a>
           </li>         
         </ul>  

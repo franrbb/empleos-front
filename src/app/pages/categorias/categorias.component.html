@@ -22,7 +22,7 @@
                 <td>{{ categoria.nombre }}</td>
                 <td>{{ categoria.descripcion }}</td>
                 <td>
-                  <a [routerLink]="['/categorias/formCategoria/', categoria.id]" class="btn btn-success btn-sm" role="button" title="Editar" style="margin: 15px"><i class="fas fa-pencil-alt" aria-hidden="true"></i></a>
+                  <a [routerLink]="['/categorias/formCategoria/', categoria.id]" class="btn btn-success btn-sm" role="button" title="Editar"><i class="fas fa-pencil-alt" aria-hidden="true"></i></a>
                   <button (click)="delete(categoria)"  class="btn btn-success btn-sm confirmar" role="button" title="Eliminar"><i class="fas fa-trash" aria-hidden="true"></i></button>
                 </td>
               </tr>               

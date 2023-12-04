@@ -52,6 +52,15 @@ export class SolicitudService {
     return false;
   }
 
+  getSolicitudes(): Observable<Solicitud[]>{
+    return this.http.get<Solicitud[]>(this.urlEndPoint, {headers: this.agregarAuthorizationHeader()}).pipe(
+      catchError(e => {
+        this.isNoAutorizado(e);
+        return throwError(() => e);
+      })
+    );
+  }
+
   getSolicitud(id: number): Observable<Vacante> {
     return this.http.get<Vacante>(`${this.urlEndPoint}/vacante/${id}`, {headers: this.agregarAuthorizationHeader()})
       .pipe((catchError( e => {
@@ -116,5 +125,29 @@ export class SolicitudService {
         return throwError(() => e);
       })
     )
+  }
+
+  delete(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.urlEndPoint}/${id}`, {headers: this.agregarAuthorizationHeader()})
+      .pipe((catchError( e => {
+        this.router.navigate(['/solicitudes'])
+  
+          if(e.status == 500){
+            return throwError(() => e);
+          }
+
+          if(this.isNoAutorizado(e)){
+            return throwError(() => e);
+          }
+  
+          Swal.fire({
+            title: e.error.mensaje,
+            text: e.error.error,
+            icon: 'error'
+          });
+        
+        return throwError(() => e);
+         
+    })));
   }
 }

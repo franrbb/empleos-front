@@ -21,6 +21,7 @@ import { LoginComponent } from './pages/usuarios/login.component';
 import { UsuariosComponent } from './pages/usuarios/usuarios.component';
 import { FormUsuarioComponent } from './pages/usuarios/form-usuario.component';
 import { FormSolicitudComponent } from './pages/solicitudes/form-solicitud/form-solicitud.component';
+import { SolicitudesComponent } from './pages/solicitudes/solicitudes/solicitudes.component';
 
 
 
@@ -41,7 +42,8 @@ import { FormSolicitudComponent } from './pages/solicitudes/form-solicitud/form-
     LoginComponent,
     UsuariosComponent,
     FormUsuarioComponent,
-    FormSolicitudComponent
+    FormSolicitudComponent,
+    SolicitudesComponent
   ],
   imports: [
     BrowserModule,
