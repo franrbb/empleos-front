@@ -37,4 +37,9 @@ export class HomeService {
 
     }));
   }
+
+  filtrarPorNombreOrCategoria(termino: string): Observable<Vacante[]>{
+    return this.http.get<Vacante[]>(`${this.urlEndPoint}/filtrar/${termino}`);
+  }
+
 }

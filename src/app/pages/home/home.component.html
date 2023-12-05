@@ -6,7 +6,7 @@
         <h3>Encuentra el trabajo que andas buscando.</h3>
         Puedes buscar por descripción y categoría.
         <form class="form-inline">
-          <input type="text" class="form-control mb-3" id="exampleFormControlInput1" placeholder="Escriba una búsqueda">&nbsp;
+          <input type="text" class="form-control mb-3" id="exampleFormControlInput1"  placeholder="Escriba una búsqueda" (keyup.enter)="filtrar(buscarTexto.value)" #buscarTexto>&nbsp;
           <select class="custom-select custom-select mb-3">
             <option selected>Seleccione una categoría</option>
             <option value="1">Ventas</option>
@@ -15,7 +15,7 @@
             <option value="4">Informática</option>
             <option value="5">Construcción</option>
           </select>&nbsp;
-          <button type="submit" class="btn btn-primary mb-3">Buscar</button>
+          <button type="submit" class="btn btn-primary mb-3" (click)="filtrar(buscarTexto.value)">Buscar</button>
         </form>
       </div>
     </div>
